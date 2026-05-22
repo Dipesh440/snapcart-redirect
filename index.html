@@ -1,0 +1,57 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SnapCart - Reset Password</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(#F9C10C, #F1A02E);
+        }
+        .card {
+            background: white;
+            padding: 32px;
+            border-radius: 16px;
+            text-align: center;
+        }
+        button {
+            background: #F9C10C;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>Reset Your Password</h2>
+        <p>Click below to open SnapCart app</p>
+        <button onclick="openApp()">
+            Open SnapCart App
+        </button>
+    </div>
+
+    <script>
+        function openApp() {
+            // Get oobCode from URL
+            const params = new URLSearchParams(window.location.search);
+            const oobCode = params.get('oobCode');
+
+            // Redirect to app
+            window.location = `snapcart://resetpassword?oobCode=${oobCode}`;
+        }
+
+        // Auto redirect after 1 second
+        window.onload = function() {
+            setTimeout(openApp, 1000);
+        }
+    </script>
+</body>
+</html>
